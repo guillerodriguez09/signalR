@@ -1,0 +1,20 @@
+@page
+@{
+    var email = Request.Query["email"].ToString();
+}
+
+<h1>Revisá tu correo</h1>
+<p>Te enviamos un email de verificación a <strong>@email</strong>.</p>
+<p id="estado">Esperando verificación...</p>
+
+<p><small>
+    Simulá el click del mail abriendo esto en otra pestaña:
+    <a href="/verificar?email=@Uri.EscapeDataString(email)" target="_blank">verificar</a>
+</small></p>
+
+<div id="datos" data-email="@email"></div>
+
+@section Scripts {
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/esperando.js"></script>
+}
